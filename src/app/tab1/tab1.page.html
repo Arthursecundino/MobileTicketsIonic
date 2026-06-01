@@ -1,17 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>🎫 Totem — Retirar Senha</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+  <ion-card *ngIf="senhaEmitida" style="text-align:center;">
+    <ion-card-header>
+      <ion-card-title style="font-size:28px; font-weight:bold;">
+        {{ senhaEmitida.numero }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ senhaEmitida.tipo === 'SP' ? '🔴 Prioritário' :
+           senhaEmitida.tipo === 'SE' ? '🟢 Retirada de Exames' : '🔵 Geral' }}
+      </ion-card-subtitle>
+    </ion-ca

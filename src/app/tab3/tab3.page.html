@@ -1,17 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+]<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>👩‍💼 Painel do Atendente</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
-</ion-content>
+  <ion-card *ngIf="senhaAtual" style="text-align:center;">
+    <ion-card-header>
+      <ion-card-title style="font-size:26px; font-weight:bold;">
+        {{ senhaAtual.numero }}
+      </ion-card-title>
+      <ion-card-subtitle>Guichê {{ senhaAtual.guiche }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      TM estimado: <strong>{{ tm }} minutos</strong>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" color="warning" (click)="chamarProxima()" style="margin-top:20px;">
+    📢 Chamar Próxima Senha
+  </ion-button>
+
+  <p *ngIf="semSenhas" style="text-align:center; color:red; margin-top:20px;">
+    ⚠️ Nenhuma senha na fila ou fora do expediente.
+  </p>
+
+  <ion-list style="margin-top:30px;">
+    <ion-list-header>
+      <ion

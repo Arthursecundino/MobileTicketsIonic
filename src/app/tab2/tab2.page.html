@@ -1,17 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Painel de Chamados</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list *ngIf="filaService.ultimasChamadas.length > 0">
+    <ion-item *ngFor="let s of filaService.ultimasChamadas">
+      <ion-label>
+        <p style="font-weight:bold;">{{ s.numero }}</p>
+        <p>Guiche {{ s.guiche }} - {{ s.atendidaEm | date:'HH:mm:ss' }}</p>
+      </ion-label>
+      <ion-badge slot="end"
+        [color]="s.tipo === 'SP' ? 'danger' : s.tipo === 'SE' ? 'success' : 'primary'">
+        {{ s.tipo }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="filaService.ultimasChamadas.length === 0" style="text-align:center; margin-top:50px; color:#999;">
+    <p>Nenhuma senha chamada ainda.</p>
+  </div>
+
 </ion-content>
